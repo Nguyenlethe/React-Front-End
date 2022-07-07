@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.svg'
 import {FormattedMessage} from 'react-intl'
-// import a1 from '../../assets/133537-khamchuyenkhoa.png'
+import {languages}  from '../../utils/constant'
+import {changeLanguageApp} from  '../../store/actions/appActions'
 
 import classNames from 'classnames/bind';
 import styles from './HomeHeader.module.scss';
@@ -13,7 +14,16 @@ const cx = classNames.bind(styles);
 
 class HomeHeader extends Component {
 
+
+
+    changeLanguage = (language) => {
+       this.props.changeLanguageAppRedux(language)
+    }
+
+
     render() {
+        let language = this.props.language
+        
         return (
             <div className={cx('container')}>
                 <div className={cx('content')}>
@@ -50,19 +60,19 @@ class HomeHeader extends Component {
                         </div>
 
                         <div className={cx('help')}>
+
                             <div className={cx('language')}>
-                                <a href="#/">ENG</a>
+                                <h4 className={cx(language === languages.EN ? 'active' : '')} onClick={() => this.changeLanguage(languages.EN)}>ENG</h4>
                                 <span>|</span>
-                                <a className={cx('active')} href="#/">VIE</a>
+                                <h4 className={cx(language === languages.VI ? 'active' : '')} onClick={() => this.changeLanguage(languages.VI)}>VIE</h4>
                             </div>
                             
                         
                             <div className={cx('list-help')}>
                                 <i className="far fa-question-circle"></i>
-                                <a href="#/" className={cx('help')}>Hỗ trợ</a>
+                                <a href="#/" className={cx('help')}><FormattedMessage id="home-nav.support"/></a>
                             </div>
                         </div>
-
                     </div> 
                 </div>
 
@@ -75,7 +85,6 @@ class HomeHeader extends Component {
                             <button type="submit">
                                 <i className="fas fa-search"></i>
                             </button>
-
                             <input type="text" placeholder="Đặt lịch khám bệnh..." className={cx('input')}/>
                         </form>
                     </div>
@@ -103,34 +112,27 @@ class HomeHeader extends Component {
                                 <p><FormattedMessage id="banner.medical"/></p>
                             </a>
 
-
                             <a href="/" className={cx('options-item')}>
                                 <div className={cx('img')}></div>
                                 <p><FormattedMessage id="banner.mental"/></p>
                             </a>
-
 
                             <a href="/" className={cx('options-item')}>
                                 <div className={cx('img')}></div>
                                 <p><FormattedMessage id="banner.dental"/></p>
                             </a>
 
-
                             <a href="/" className={cx('options-item')}>
                                 <div className={cx('img')}></div>
                                 <p><FormattedMessage id="banner.surgery"/></p>
                             </a>
 
-
                             <a href="/" className={cx('options-item')}>
                                 <div className={cx('img')}></div>
                                 <p><FormattedMessage id="banner.medical-products"/></p>
                             </a>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
         )
@@ -140,12 +142,13 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
-        lang: state.app.language
+        language: state.app.language
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language))
     };
 };
 
