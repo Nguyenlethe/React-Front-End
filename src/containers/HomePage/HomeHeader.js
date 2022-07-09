@@ -22,6 +22,7 @@ class HomeHeader extends Component {
 
 
     render() {
+        
         let language = this.props.language
         
         return (
@@ -122,22 +123,13 @@ class HomeHeader extends Component {
                                 <p><FormattedMessage id="banner.dental"/></p>
                             </a>
 
-                            <a href="/" className={cx('options-item')}>
-                                <div className={cx('img')}></div>
-                                <p><FormattedMessage id="banner.surgery"/></p>
-                            </a>
-
-                            <a href="/" className={cx('options-item')}>
-                                <div className={cx('img')}></div>
-                                <p><FormattedMessage id="banner.medical-products"/></p>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         )
     }
-}
+} 
 
 const mapStateToProps = state => {
     return {

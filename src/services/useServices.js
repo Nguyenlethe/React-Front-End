@@ -34,4 +34,11 @@ function editUser(data) {
   return axios.put("/api/edit-user",data);
 }
 
-export default { handleLogin, getAllUsers, createNewUser, deleteUser ,editUser};
+
+// edit user
+function getAllCode(inputType) {
+  return axios.get(`/api/allcode?type=${inputType}`);
+}
+
+
+export default { handleLogin, getAllUsers, createNewUser, deleteUser ,editUser,getAllCode};
