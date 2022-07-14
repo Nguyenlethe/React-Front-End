@@ -76,6 +76,7 @@
         "gender":"Gender",
         "role":"Role",
         "save":"Save User",
+        "change":"Change User",
         "avata":"Avata",
         "positionld": "Positionld"
     }

@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import classNames from 'classnames/bind';
+import classNames from 'classnames/bind'; 
 import styles from './Specalty.Module.scss';
 const cx = classNames.bind(styles);
 

@@ -4,9 +4,12 @@ import logo from '../../assets/logo.svg'
 import {FormattedMessage} from 'react-intl'
 import {languages}  from '../../utils/constant'
 import {changeLanguageApp} from  '../../store/actions/appActions'
+import { withRouter } from 'react-router';
+
 
 import classNames from 'classnames/bind';
 import styles from './HomeHeader.module.scss';
+// import {Link, NavLink } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 //         <div className={cx('')}></div>
@@ -15,6 +18,9 @@ const cx = classNames.bind(styles);
 class HomeHeader extends Component {
 
 
+    nextHomePage = () => {
+        this.props.history.push(`/home`)
+    }
 
     changeLanguage = (language) => {
        this.props.changeLanguageAppRedux(language)
@@ -23,7 +29,7 @@ class HomeHeader extends Component {
 
     render() {
         
-        let language = this.props.language
+        let {language,isShowBanner} = this.props
         
         return (
             <div className={cx('container')}>
@@ -33,7 +39,10 @@ class HomeHeader extends Component {
                         <div className={cx('logo-menu')}>
                             <i className="fas fa-list-ul"></i>
                             <div className={cx('logo-nav')}></div>
-                            <img src={logo} alt=""/>
+                           
+                                <img src={logo} alt="" onClick={() => this.nextHomePage()} />
+                         
+
                         </div>
 
                         <div className={cx('content-nav')}>
@@ -76,7 +85,7 @@ class HomeHeader extends Component {
                         </div>
                     </div> 
                 </div>
-
+                {isShowBanner === false ?  '' : 
                 <div className={cx('banner')}>
                     <div className={cx('content-banner')}>
                         <h4><FormattedMessage id="banner.title-one"/></h4>
@@ -126,6 +135,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
+                }
             </div>
         )
     }
@@ -144,4 +154,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader))

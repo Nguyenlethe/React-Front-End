@@ -4,7 +4,11 @@ const initialState = {
    genders: [],
    roleId: [],
    position: [],
-   isLoadingGender: false
+   isLoadingGender: false,
+   users: [],
+   topDoctors: [],
+   allDoctors: []
+   
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -19,14 +23,14 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_GENDER_SUSCESS:  
             // state là data của redux ,  action là dữ liệu trả về của Action
             state.genders = action.data
-            console.log("reduce",action.data)
+            // console.log("reduce",action.data)
             state.isLoadingGender = false;
             return {
                 ...state
             }
 
 
-        case actionTypes.FETCH_GENDER_FAIDED:
+        case actionTypes.FETCH_GENDER_FAILED:
             state.genders = []
             state.isLoadingGender = false;
             return {
@@ -37,13 +41,13 @@ const adminReducer = (state = initialState, action) => {
         case actionTypes.FETCH_POSITION_SUSCESS:  
             state.position = action.data
             state.isLoadingGender = false;
-            console.log("reduce2",action.data)
+            // console.log("reduce2",action.data)
             return {
                 ...state
             }
 
 
-        case actionTypes.FETCH_POSITION_FAIDED:
+        case actionTypes.FETCH_POSITION_FAILED:
             state.position = []
             state.isLoadingGender = false;
             return {
@@ -54,7 +58,7 @@ const adminReducer = (state = initialState, action) => {
 
 
         case actionTypes.FETCH_ROLE_SUSCESS:  
-             console.log("reduce3",action.data)
+            //  console.log("reduce3",action.data)
             state.roleId = action.data
             state.isLoadingGender = false;
             return {
@@ -62,7 +66,7 @@ const adminReducer = (state = initialState, action) => {
             }
 
 
-        case actionTypes.FETCH_ROLE_FAIDED:
+        case actionTypes.FETCH_ROLE_FAILED:
             state.roleId = []
             state.isLoadingGender = false;
             return {
@@ -71,8 +75,63 @@ const adminReducer = (state = initialState, action) => {
 
 
 
+            
 
 
+
+        case actionTypes.FETCH_ALL_USER_SUSCESS:  
+            state.users = action.data
+            state.isLoadingGender = false;
+            // console.log("Get All Users :",action.data)
+            return {
+                ...state
+            }
+
+
+        case actionTypes.FETCH_ALL_USER_FAILED:
+            state.users = []
+            state.isLoadingGender = false;
+            return {
+                ...state
+            }
+
+
+
+
+        case actionTypes.FETCH_TOP_DOCTOR_SUSCESS:  
+            state.topDoctors = action.dataDoctor
+            state.isLoadingGender = false;
+            console.log(action.dataDoctor)
+            // console.log("Get All Users :",action.data)
+            return {
+                ...state
+            }
+
+
+        case actionTypes.FETCH_TOP_DOCTOR_FAILED:
+            state.topDoctors = []
+            state.isLoadingGender = false;
+            return {
+                ...state
+            }
+
+
+   
+        case actionTypes.FETCH_All_DOCTOR_SUSCESS:  
+            state.allDoctors = action.allDoctor
+            state.isLoadingGender = false;
+            // console.log(action.allDoctor)
+            return {
+                ...state
+            }
+
+
+        case actionTypes.FETCH_All_DOCTOR_FAILED:
+            state.allDoctors = []
+            state.isLoadingGender = false;
+            return {  
+                ...state
+            }
 
 
 

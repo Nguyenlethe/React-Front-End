@@ -176,8 +176,9 @@ class ModalUser extends Component {
                                     <label>Gender</label>
                                     <select name="gender" className="form-control input" value={this.state.gender} onChange={(e) => this.handleOnchaneInput(e, e.target.name)} >
                                         <option></option>
-                                        <option value="1">Male</option>
-                                        <option value="0">Female</option>
+                                        <option value="0">Other</option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
                                     </select>
                                     <span className="error"></span>
                                 </div>

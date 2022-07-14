@@ -40,5 +40,36 @@ function getAllCode(inputType) {
   return axios.get(`/api/allcode?type=${inputType}`);
 }
 
+// Lấy ra all thông tin 10 bs
+function getTopDocterHome(limit) {
+  return axios.get(`/api/top-docter-home?limit=${limit}`);
+}
 
-export default { handleLogin, getAllUsers, createNewUser, deleteUser ,editUser,getAllCode};
+function getAllDoctors() {
+  return axios.get(`/api/get-all-doctors`);
+}
+ 
+
+function createDetailDoctor(data) {
+  return axios.post(`/api/save-infor-doctors`,data);
+}
+
+
+function getDetailInfoDoctor(id) {
+  return axios.get(`/api/detail-docter-by-id?id=${id}`);
+}
+
+
+
+export default {
+  handleLogin, 
+  getAllUsers, 
+  createNewUser, 
+  deleteUser ,
+  editUser,
+  getAllCode,
+  getTopDocterHome,
+  getAllDoctors,
+  createDetailDoctor,
+  getDetailInfoDoctor
+};
